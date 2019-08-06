@@ -1,0 +1,14 @@
+{
+  "name": "elegit",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": "git@github.com:fanzihui/electron_test.git",
+  "author": "fanfan <fanfan1025537699@163.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^6.0.0"
+  },
+  "scripts": {
+    "start": "electron ."
+  }
+}
