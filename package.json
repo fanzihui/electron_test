@@ -10,5 +10,8 @@
   },
   "scripts": {
     "start": "electron ."
+  },
+  "dependencies": {
+    "axios": "^0.19.0"
   }
 }
