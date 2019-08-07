@@ -1,10 +1,19 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+
+ipcMain.on('greet', (event, args) => {
+  console.log(args)
+
+  event.sender.send('greet', {
+    message: 'hi renderer ~'
+  })
+})
+
 
 function createWindow () {
   // Create the browser window.
@@ -18,7 +27,9 @@ function createWindow () {
     backgroundColor: '#f8f8f8',
 		transparent: true,
 		titleBarStyle: 'hiddenInset',
-		vibrancy: 'light',
+    vibrancy: 'light',
+    // 禁用同源策略
+    webSecurity: false, 
   })
 
   // and load the index.html of the app.
@@ -34,6 +45,7 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
 }
 
 // This method will be called when Electron has finished
@@ -56,3 +68,7 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+require('electron-reload')(__dirname, {
+  electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
+})
