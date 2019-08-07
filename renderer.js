@@ -50,12 +50,15 @@ axios.get('https://raw.githubusercontent.com/fanzihui/electron_test/master/updat
       .on('progress', (state) => {
           // 进度
           console.log(state)
-          pageProgress.innerHTML = state.percent.toFixed(2) * 100 + '%'
+          
+          pageProgress.innerHTML = (state.percent * 100 ).toFixed()  + '%'
       })
       .on('end',function(){
+        pageProgress.innerHTML = 100 + '%'
         setTimeout(function(){
           shell.openItem(path.join(app.getPath('temp'), 'kujiale-win64-12.0.2-stable-zhannei_denglu.exe'))
           app.quit();
+          console.log('end')
         },5000)
       })
       // 写入到临时文件夹
