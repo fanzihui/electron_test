@@ -6,7 +6,7 @@
   "author": "fanfan <fanfan1025537699@163.com>",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^6.0.0"
+    "electron": "^11.5.0"
   },
   "scripts": {
     "start": "electron ."
